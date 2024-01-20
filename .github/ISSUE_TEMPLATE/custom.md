@@ -1,6 +1,6 @@
 ---
 name: Custom issue template
-about: Describe this issue template's purpose here.
+about: Custom template for DevOps capstone project.
 title: ''
 labels: ''
 assignees: ''
