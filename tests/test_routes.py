@@ -158,3 +158,13 @@ class TestAccountService(TestCase):
         """It should not update an account if return code is 404"""
         response = self.client.put(f"{BASE_URL}/0")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    ## LIST ALL ACCOUNTS TESTS ##
+    def test_get_account_list(self):
+        """It should return a list of all accounts in the system"""
+        self._create_accounts(3)
+        response = self.client.get(BASE_URL)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        accountList = response.get_json()
+        self.assertEqual(len(accountList), 3)
