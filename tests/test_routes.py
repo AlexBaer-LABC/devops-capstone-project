@@ -125,7 +125,7 @@ class TestAccountService(TestCase):
 
     # ADD YOUR TEST CASES HERE ...
 
-    ## READ ACCOUNT TESTS ##
+    # READ ACCOUNT TESTS
     def test_read_an_account(self):
         """It should read a single account"""
         account = self._create_accounts(1)[0]
@@ -140,7 +140,7 @@ class TestAccountService(TestCase):
         response = self.client.get(f"{BASE_URL}/0")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    ## UPDATE ACCOUNT TESTS ##
+    # UPDATE ACCOUNT TESTS
     def test_update_account(self):
         """It should update the specified account info"""
         testAccount = AccountFactory()
@@ -160,14 +160,14 @@ class TestAccountService(TestCase):
         response = self.client.put(f"{BASE_URL}/0")
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    ## DELETE ACCOUNT TESTS ##
+    # DELETE ACCOUNT TESTS
     def test_delete_account(self):
         """It should Delete the specified Account"""
         account = self._create_accounts(1)[0]
         response = self.client.delete(f"{BASE_URL}/{account.id}")
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
 
-    ## LIST ALL ACCOUNTS TESTS ##
+    # LIST ALL ACCOUNTS TESTS
     def test_get_account_list(self):
         """It should return a list of all accounts in the system"""
         self._create_accounts(3)
@@ -176,8 +176,8 @@ class TestAccountService(TestCase):
 
         accountList = response.get_json()
         self.assertEqual(len(accountList), 3)
-    
-    ## METHOD NOT ALLOWED ERROR TEST ##
+
+    # METHOD NOT ALLOWED ERROR TEST
     def test_method_not_allowed(self):
         """It should not allow a call to the wrong method"""
         response = self.client.delete(BASE_URL)
